@@ -1,0 +1,58 @@
+
+<section class="ibanner">
+  <div class="swiper-container">
+    <div class="swiper-wrapper"> {maccms:vod num="10" paging="no" type="all" level="9" order="desc" by="sort"}
+      <div class="swiper-slide"><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img src="{$vo.vod_pic_slide}" height="377"/>
+        <p>{$vo.vod_name}</p>
+        </a></div>
+      {/maccms:vod} </div>
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="button">
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+<section class="isubmenu">
+<div class="submenu-container">
+{maccms:type  ids="1" order="asc" by="sort" id="vo1" key="key1"}
+<div class="typeclass"> 
+  <!--<h3>{$vo5.type_name}</h3>-->
+  <a href="{:mac_url_type($vo1,[],'type')}"><dt>电<br>
+    影</dt></a>
+  <div class="tab">{maccms:type num="8" parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo1" key="key1"} <a href="{:mac_url_type($vo1,[],'show')}" target="_blank">{$vo1.type_name}</a>{/maccms:type} </div>
+</div>
+{/maccms:type}
+{maccms:type ids="2" order="asc" by="sort" id="vo2" key="key2"}
+<div class="typeclass"> 
+  <!--<h3>{$vo5.type_name}</h3>-->
+  <a href="{:mac_url_type($vo1,[],'type')}"><dt>剧<br>
+    集</dt></a>
+  <div class="tab">{maccms:type parent="'.$vo2['type_id'].'" order="asc" by="sort" id="vo2" key="key2"} <a href="{:mac_url_type($vo2,[],'show')}" target="_blank">{$vo2.type_name}</a>{/maccms:type} </div>
+</div>
+{/maccms:type}
+{maccms:type  ids="1" order="asc" by="sort" id="vo3" key="key3"}
+<div class="typeclass-max jqclass">
+  <dt>剧<br>
+    情</dt>
+  <div class="tab"> {maccms:foreach name=":explode(',',$vo3.type_extend.class)" num="8" } <a href="{:mac_url_type($vo3,['class'=>$vo],'show')}">{$vo}</a>{/maccms:foreach}</div>
+</div>
+{/maccms:type}
+<div class="typeclass-max">
+  <ul class="ypimglist">
+    <a  href="{$maccms.site_url}/index.php/art/type/id/5.html"><dt>影<br>
+		评</dt></a>
+    {maccms:art num="1" order="desc" by="time"}
+    <li> <a href="{:mac_url_art_detail($vo)}"> <img class="thumb" data-src="{$vo.art_pic}" alt="{$vo.art_name}">
+      <h3 class="pic" title="{$vo.art_name}">{$vo.art_name}</h3>
+      </a> </li>
+    {/maccms:art}
+  </ul>
+</div>
+<div class="typeclass-vip">
+  <ul class="vipimg">
+    <li> <a href="{$maccms.site_url}/index.php/user/upgrade.html"> <img class="thumb" src="{$maccms.path_tpl}images/vip.png" alt="VIP会员专享">
+      </a> </li>
+  </ul>
+</div>
+</section>

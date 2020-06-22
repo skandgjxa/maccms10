@@ -1,0 +1,2 @@
+MacPlayer.Html = '<iframe src="https://jx.123ku.com/123kudpbfq/?url='+MacPlayer.PlayUrl+'" height="'+MacPlayer.Height+'" width="100%" scrolling="no" id="Player"  allowfullscreen="true"></iframe>';
+MacPlayer.Show();

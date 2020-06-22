@@ -1,0 +1,7 @@
+#以#开头代表注释行
+
+#忽略Runtime文件夹下的文件
+.idea/
+runtime/
+index.html
+template

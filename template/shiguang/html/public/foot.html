@@ -1,0 +1,61 @@
+<!-- 页脚 -->
+
+    <footer class="ifoot">
+
+        <nav class="bnav">
+
+		{maccms:type ids="parent" order="asc" by="sort"}
+
+		<a href="{:mac_url_type($vo)}" title="{$vo.type_name}" class="tyepLink{$vo.type_id}">热播{$vo.type_name}</a>
+
+		{/maccms:type}
+
+		<a href="{:mac_url('gbook/index')}" title="留言求片">留言求片</a>
+
+		</nav>
+
+        <p>免责声明:本网站所有内容均系收集于各大网站，本站只提供WEB页面服务，并不提供影片资源储存也不参与录制与上传，若本站收录内容无意侵犯了贵公司版权，请给网页底部邮箱地址来信，我们会及时处理和回复，谢谢合作。</p>
+
+        <p class="en">{$maccms.site_url}站长邮箱:{$maccms.site_email}</p>
+		<p class="en"><a href="http://www.13bk.cn/">纯洁博客</a>提供源码分享</p>
+		<div class="adsfoot" id="adsfoot">
+		</div>
+    </footer>
+	<script> 
+		var type21Id = document.getElementById('typemenu21');
+		type21Id.href = 'javascript:;';
+		
+		function setCookie(cname,cvalue,exdays){
+			var d = new Date();
+			d.setTime(d.getTime()+(exdays*24*60*60*1000));
+			var expires = "expires="+d.toGMTString();
+			document.cookie = cname+"="+cvalue+"; "+expires;
+		}
+		function getCookie(cname){
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) {
+				var c = ca[i].trim();
+				if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+			}
+			return "";
+		}
+		
+		var footContainer = document.getElementsByClassName('ifoot')[0];
+		var adsFootClass = document.getElementById('adsfoot');
+		function closeAdsfoot (){
+			
+			footContainer.removeChild(adsFootClass);
+			setCookie("showFootAds","false",1);
+			//var showFootAds=getCookie("showFootAds");
+		}
+		var showFootAds=getCookie("showFootAds");
+		if (showFootAds=="false"){
+			footContainer.removeChild(adsFootClass);
+		}else{
+			var adsFootHtml='<img src="{$maccms.path_tpl}ads/adsfoot.png" /><a class="adsfoot_close" href="javascript:;" onClick="closeAdsfoot();" >X</a>';
+			adsFootClass.innerHTML= adsFootHtml;
+		}
+	</script>
+	<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfd500a72c7eda0"></script>	
