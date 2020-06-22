@@ -2260,3 +2260,56 @@ function reset_html_filename($htmlfile)
     return $htmlfile;
 }
 
+function zh_2_tw_type_arr($data){
+    if(!is_array($data))return $data;
+    $od= load_od("s2twp");//传入配置文
+    foreach( $data as $k=> $rows ){
+        $data[$k]= zh_2_tw($rows );
+    }
+    return $data;
+}
+
+function zh_2_tw($data ){
+    $p= '/[\x7f-\xff]/';
+    $od= load_od("s2twp"); //传入配置文件名
+    if(is_string($data)&&preg_match($p, $data)){
+        $data= opencc_convert($data, $od);
+    }
+    if(is_array($data)){
+        foreach($data as $k=> $v ){
+            if(is_numeric($v))continue;
+            if(is_string($v)&&preg_match($p, $v)){
+                $data[ $k ]= opencc_convert($v, $od);
+            }
+        }
+    }
+    return $data;
+}
+
+function tw_2_zh($data){
+    $p= '/[\x7f-\xff]/';
+    $od= load_od("tw2sp");//传入配置文件名
+    if(is_string($data) &&!empty($data) && preg_match($p, $data)){
+        $data= opencc_convert($data, $od);
+    }
+    if(is_array($data)){
+        foreach($data as $k => $v ){
+            if(is_numeric($v)) continue;
+            if(is_string($v) && preg_match($p, $v)){
+                $data[ $k ] = opencc_convert($v, $od);
+            }
+        }
+    }
+    return $data;
+}
+
+function load_od( $key ){
+    $od= \app\CommonData::getVar($key) ;
+    if(empty($od)){
+        error_log("test_info load_".$key );
+        $od = opencc_open($key.".json"); //传入配置文件名
+        \app\CommonData::setVar($key,$od) ;
+    }
+    return $od;
+}
+

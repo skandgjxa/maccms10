@@ -57,6 +57,8 @@ class Vod extends Base {
 	            }
             }
         }
+
+        $list = zh_2_tw_type_arr($list);//将查询结果显示为繁体中文
         return ['code'=>1,'msg'=>'数据列表','page'=>$page,'pagecount'=>ceil($total/$limit),'limit'=>$limit,'total'=>$total,'list'=>$list];
     }
 
@@ -140,6 +142,7 @@ class Vod extends Base {
         $cachetime = $lp['cachetime'];
         $isend = $lp['isend'];
         $plot = $lp['plot'];
+        $typenot = $lp['typenot'];
 
         $page = 1;
         $where=[];
@@ -337,6 +340,9 @@ class Vod extends Base {
                 $where['type_id'] = ['in', implode(',',$type) ];
             }
         }
+        if(!empty($typenot)){
+            $where['type_id'] = ['not in',$typenot];
+        }
         if(!empty($tid)) {
             $where['type_id|type_id_1'] = ['eq',$tid];
         }
@@ -390,7 +396,9 @@ class Vod extends Base {
             if(!empty($GLOBALS['config']['app']['search_vod_rule'])){
                 $role .= '|'.$GLOBALS['config']['app']['search_vod_rule'];
             }
-            $where[$role] = ['like', '%' . $wd . '%'];
+            $wd2= tw_2_zh($wd);//数据源为简体中文，转为简体中文查询
+//            $where[$role] = ['like', '%' . $wd . '%'];
+            $where[$role] = [['like', '%' . $wd2 . '%'],['like', '%' . $wd . '%'],"OR"];
         }
         if(!empty($tag)) {
             $where['vod_tag'] = ['like',mac_like_arr($tag),'OR'];
@@ -446,10 +454,13 @@ class Vod extends Base {
 
         $cach_name = $GLOBALS['config']['app']['cache_flag']. '_' .md5('vod_listcache_'.http_build_query($where_cache).'_'.$order.'_'.$page.'_'.$num.'_'.$start.'_'.$pageurl);
         $res = Cache::get($cach_name);
+        if(empty($cachetime)){
+            $cachetime = $GLOBALS['config']['app']['cache_time'];
+        }
         if($GLOBALS['config']['app']['cache_core']==0 || empty($res)) {
             $res = $this->listData($where, $order, $page, $num, $start,'*',1, $totalshow);
             if($GLOBALS['config']['app']['cache_core']==1) {
-                Cache::set($cach_name, $res, $GLOBALS['config']['app']['cache_time']);
+                Cache::set($cach_name, $res, $cachetime);
             }
         }
         $res['pageurl'] = $pageurl;
@@ -503,6 +514,7 @@ class Vod extends Base {
                 Cache::set($key, $info);
             }
         }
+        $info = zh_2_tw( $info );//影片信息显示为中文
         return ['code'=>1,'msg'=>'获取成功','info'=>$info];
     }
 

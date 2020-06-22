@@ -22,7 +22,7 @@ return [
 
     // 框架核心错误提示
     'dispatch type not support'                                 => '不支持的调度类型',
-    'method param miss'                                         => '方法参数错误',
+    'method param miss'                                         => '方法參數錯誤',
     'method not exists'                                         => '方法不存在',
     'module not exists'                                         => '模块不存在',
     'controller not exists'                                     => '控制器不存在',

@@ -493,6 +493,8 @@ abstract class Connection
                 [$value . ')', $value . ',', $value . ' ', $value . PHP_EOL],
                 $sql . ' ');
         }
+        error_log($sql);
+
         return rtrim($sql);
     }
 
@@ -518,6 +520,9 @@ abstract class Connection
             } else {
                 $result = $this->PDOStatement->bindValue($param, $val);
             }
+
+//            error_log( $this->getLastsql() );
+
             if (!$result) {
                 throw new BindParamException(
                     "Error occurred  when binding parameters '{$param}'",

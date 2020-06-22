@@ -1,5 +1,29 @@
 <?php
 return array (
+  'wlm3u8' => 
+  array (
+    'status' => '1',
+    'from' => 'wlm3u8',
+    'show' => 'wlm3u8',
+    'des' => 'https://wlzy.tv',
+    'ps' => '1',
+    'parse' => 'https://jx.inpower.cc/?url=',
+    'sort' => '999',
+    'tip' => '在线播放,无需安装播放器',
+    'id' => 'wlm3u8',
+  ),
+  'mbyun' => 
+  array (
+    'status' => '1',
+    'from' => 'mbyun',
+    'show' => '秒播云',
+    'des' => 'mbkkk.com',
+    'ps' => '0',
+    'parse' => 'https://api.mb999.vip/index.php?url=',
+    'sort' => '997',
+    'tip' => '无需安装任何插件',
+    'id' => 'mbyun',
+  ),
   'dplayer' => 
   array (
     'status' => '1',
@@ -86,5 +110,115 @@ return array (
     'sort' => '902',
     'tip' => '无需安装任何插件	',
     'id' => 'flv',
+  ),
+  'yjm3u8' => 
+  array (
+    'status' => '1',
+    'from' => 'yjm3u8',
+    'show' => '永久m3u8',
+    'des' => 'http://www.yongjiuzy.cc',
+    'target' => '_self',
+    'ps' => '1',
+    'parse' => 'https://www.yongjiujiexi.net/m3u8.html?url=',
+    'sort' => '800',
+    'tip' => '在线播放,无需安装播放器',
+    'id' => 'yjm3u8',
+  ),
+  'yjyun' => 
+  array (
+    'status' => '1',
+    'from' => 'yjyun',
+    'show' => '永久云',
+    'des' => 'http://www.yongjiuzy.cc',
+    'target' => '_self',
+    'ps' => '0',
+    'parse' => '',
+    'sort' => '800',
+    'tip' => '在线播放,无需安装播放器',
+    'id' => 'yjyun',
+  ),
+  'dbm3u8' => 
+  array (
+    'status' => '1',
+    'from' => 'dbm3u8',
+    'show' => 'dbm3u8',
+    'des' => 'dbm3u8',
+    'ps' => '1',
+    'parse' => '',
+    'sort' => '100',
+    'tip' => 'DBHD',
+    'id' => 'dbm3u8',
+  ),
+  'dbyun' => 
+  array (
+    'status' => '1',
+    'from' => 'dbyun',
+    'show' => 'dbyun',
+    'des' => '',
+    'ps' => '0',
+    'parse' => '',
+    'sort' => '99',
+    'tip' => 'dbyun',
+    'id' => 'dbyun',
+  ),
+  'gqyun' => 
+  array (
+    'status' => '1',
+    'from' => 'gqyun',
+    'show' => 'gqyun',
+    'des' => '',
+    'ps' => '0',
+    'parse' => '',
+    'sort' => '99',
+    'tip' => 'gqyun',
+    'id' => 'gqyun',
+  ),
+  'kuyun' => 
+  array (
+    'status' => '1',
+    'from' => 'kuyun',
+    'show' => 'kuyun',
+    'des' => 'https://www.mahuazy.com/',
+    'ps' => '0',
+    'parse' => '',
+    'sort' => '99',
+    'tip' => '在线播放,无需安装播放器',
+    'id' => 'kuyun',
+  ),
+  'mahua' => 
+  array (
+    'status' => '1',
+    'from' => 'mahua',
+    'show' => 'mahua',
+    'des' => 'https://www.mahuazy.com/',
+    'ps' => '1',
+    'parse' => 'https://www.mhbofang.com/?url=',
+    'sort' => '99',
+    'tip' => '在线播放,无需安装播放器',
+    'id' => 'mahua',
+  ),
+  'wlzy' => 
+  array (
+    'status' => '1',
+    'from' => 'wlzy',
+    'show' => 'wlzy',
+    'des' => 'http://wlzy.tv',
+    'ps' => '1',
+    'parse' => 'https://jx.wlzy.tv/jx.php?url=',
+    'sort' => '99',
+    'tip' => '在线播放,无需安装播放器',
+    'id' => 'wlzy',
+  ),
+  'gqm3u8' => 
+  array (
+    'status' => '1',
+    'from' => 'gqm3u8',
+    'show' => 'gqm3u8',
+    'des' => '高清电影',
+    'ps' => '1',
+    'parse' => '',
+    'sort' => '98',
+    'tip' => 'HDDY',
+    'id' => 'gqm3u8',
   ),
 );
